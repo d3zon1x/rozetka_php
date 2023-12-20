@@ -1,0 +1,138 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Будьте уважні обрежені",
+        "description": "Demo my Project ",
+        "contact": {
+            "email": "admin@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "operationId": "188d1a52d40fdb578595b8b69fd9aa96",
+                "responses": {
+                    "200": {
+                        "description": "List products."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "operationId": "af9ea3f02fbf732a37e94ab4cf3f94c7",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "image"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "type": "file"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Add product."
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "operationId": "32be90541d57c9e55ecc8114f52f3e22",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ідентифікатор категорії",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успішне видалення категорії"
+                    },
+                    "404": {
+                        "description": "Категорії не знайдено"
+                    },
+                    "401": {
+                        "description": "Не авторизований"
+                    }
+                }
+            }
+        },
+        "/api/products/edit/{id}": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "operationId": "18b802f341dafc724479d9cffa4ab491",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ідентифікатор категорії",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "type": "file"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Add Category."
+                    }
+                }
+            }
+        }
+    }
+}
